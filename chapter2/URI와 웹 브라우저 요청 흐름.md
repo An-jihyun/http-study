@@ -1,0 +1,85 @@
+# URI와 웹 브라우저 요청 흐름
+
+## URI (Uniform Resource Identifier)
+- Uniform: 리소스 식별하는 통일된 방식
+- Resource: 자원, URI로 식별할 수 있는 모든 것(제한 없음)
+- Identifier: 다른 항목과 구분하는데 필요한 정보
+
+URI는 로케이터(locator), 이름(name) 또는 둘 다 추가로 분류될 수 있다
+
+===================================================
+
+- URL(Resours Locator)
+  : 리소스가 있는 위치를 지정
+  ex) https://www.example.com/index.html
+
+- URN(Resours Name)
+  : 리소스에 이름을 부여
+  URN 이름만으로 실제 리소스를 찾을 수 있응 방법이 보편화 되지 않음
+  ex) urn:example:resource:12345
+
++ https://www.ieft.org/rfc/rfc3986.txt - 1.1.3. URI, URL, and URN
+- ITF라고 RFC 표준 스펙이 여기 정의되어 있음
+  
+### 앞으로 URI를 URL과 같은 의미로 이야기함
+
+==================================================
+
+[scheme]://[user:password@]host[:port][/path][?query][#fragment]
+
+### scheme (프로토콜):
+리소스에 접근하기 위해 사용되는 프로토콜을 지정
+(프로토콜: 어떤 방식으로 자원에 접근할 것인다 하는 약속 규칙)
+일반적으로 "http", "https", "ftp" 등이 사용
+
+### user:password (사용자 정보):
+필요에 따라 사용자 이름과 비밀번호를 포함해서 인증
+그러나 보안상의 이유로 현재는 잘 사용 X
+
+### host (호스트):
+리소스가 호스팅되는 서버의 도메인 이름이나 IP 주소
+
+### port (포트):
+서버에 접속하기 위한 포트 번호
+기본값은 프로토콜에 따라 다르며, 생략 가능
+http는 80포트, https는 443포트를 주로 사용
+포트는 생략 가능
+
+### path (경로):
+서버에서 리소스의 위치를 정의
+계층적 구조 ex) /home/file1.jpg, /menbers etc
+디렉토리 구조나 파일 이름 등이 여기에 포함
+
+### query (쿼리 매개변수):
+key=value 형태
+리소스에 대한 추가적인 매개변수를 전달하는 데 사용
+일반적으로 ?로 시작, 여러 개의 키-값 쌍이 &로 구분
+query parameter, (숫자로 적어도 문자로 넘어가서)query string 등으로 불림 
+웹서버에 제공하는 파라미터, 문자 형태
+
+### fragment (프래그먼트):
+fragment
+리소스 내에서 특정 부분을 나타내는데 사용(html내부 북마크 등에 사용)
+주로 웹 페이지의 특정 섹션을 가리킬 때 사용
+서버에 전송하는 정보 아님
+
+-------------------------------------------------
+
+### 예시 URL
+https://www.example.com:8080/path/to/resource?name=value#section
+
+프로토콜: https://
+호스트: www.example.com
+포트: 8080
+경로: /path/to/resource
+쿼리: ?name=value
+프래그먼트: #section
+
+--------------------------------------------------
+
++ HTTPS란?
+HTTP의 강력한 보안이 적용된 것
+
+==================================================
+
+## 웹 브라우저 요청 흐름
